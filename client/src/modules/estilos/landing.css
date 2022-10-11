@@ -1,0 +1,45 @@
+.fondo{
+    background-image:url("../../img/mapfond.webp");
+    background-size:cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pani1cont{
+    background-color: rgba(240, 248, 255, 0.836);
+    width: 45%;
+    height: 30%;
+    border-radius: 50px 50px;
+    animation-name: entrada1;
+    animation-duration: 4s;
+}
+@keyframes entrada1 {
+    0%{opacity: 0%;
+    margin-top: -50%;}
+    100%{opacity: 100%;}
+}
+
+#btxt{
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+#explorarbtn{
+    margin-top: 40px;
+    color: aliceblue;
+    font-size: 24px;
+    background-color: rgb(6, 6, 83);
+    border-radius: 12px;
+}
+#explorarbtn:hover{
+    margin-top: 40px;
+    color: rgb(6, 6, 83);
+    font-size: 24px;
+    background-color: aliceblue;
+    border-radius: 12px;
+}

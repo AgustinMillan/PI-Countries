@@ -30,4 +30,13 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/", async(req,res)=>{
+    try {
+        const actividades = await Actividades.findAll();
+        res.status(200).send(actividades)
+    } catch (error) {
+        res.status(404).send(error);
+    }
+})
+
 module.exports = router;
