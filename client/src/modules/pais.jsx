@@ -1,13 +1,16 @@
-import React from 'react'
-import "./estilos/pais.css"
-function Pais({img, nombre, continente}) {
+import React from "react";
+import { Link } from "react-router-dom";
+import "./estilos/pais.css";
+function Pais({ id ,img, nombre, continente }) {
   return (
-    <div className='CardPaisHome'>
-        <img src={img} className="imgCard" alt='imgpais'/>
+    <Link to={`/country/${id}`}>
+      <div className="CardPaisHome">
+        <img src={img} className="imgCard" alt="imgpais" />
         <span id="nombreDePais">{nombre}</span>
         <span id="continenteDePais">{continente}</span>
-    </div>
-  )
+      </div>
+    </Link>
+  );
 }
 
-export default Pais
+export default Pais;
