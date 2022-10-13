@@ -4,7 +4,9 @@
   height: 95.4%;
   width: 100%;
 }
-
+.conthomecompleto{
+  display: flex;
+}
 .contenedorph {
   margin: 10px;
   display: flex;

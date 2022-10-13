@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import "./estilos/home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPaises, getFilt } from "../redux/actions";
+import { cambiarCont, getAllPaises, getFilt } from "../redux/actions";
 import Pais from "./pais";
 import Paginado from "./paginado";
+import Ordenfiltro from "./ordenfiltro";
 
 function Home() {
   const dispatch = useDispatch();
@@ -18,10 +19,12 @@ function Home() {
     (pagina - 1) * porPag + porPag
   );
   useEffect(() => {
+    
     if (camB === "") {
       dispatch(getAllPaises());
     } else {
       dispatch(getFilt(camB));
+
     }
   }, [camB]);
 
@@ -42,6 +45,9 @@ function Home() {
         />
       </div>
       <div className="conthomecompleto">
+        <div className="contenedorOrdenamiento">
+          <Ordenfiltro/>
+        </div>
         <div className="contenedorph">
           <div id="listadoPaisesHome">
             {listpaises &&

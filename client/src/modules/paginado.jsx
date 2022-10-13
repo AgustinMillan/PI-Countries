@@ -1,30 +1,44 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actualizar } from "../redux/actions";
 import "./estilos/paginado.css";
 function Paginado({ pagina, setPagina, maximo, setPorPag }) {
   const [input, setInput] = useState(1);
-
-  useEffect(()=>{
-      if(pagina === 1){
-        setPorPag(9)
-      }else{
-        setPorPag(10)
+  const actualizarr = useSelector((e) => e.actualizar);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (pagina === 1) {
+      setPorPag(9);
+    } else {
+      setPorPag(10);
+    }
+    if (actualizarr === true) {
+      dispatch(actualizar(false));
+      if (input > 1) {
+        setInput(1);
+        return setPagina(1);
+      } else {
+        setInput(2);
+        setPagina(2);
+        dispatch(actualizar(true));
       }
-  },[input])
-  function nextPag() {
-      if (input < Math.ceil(maximo)) {
-          setInput(input + 1);
-          setPagina(input + 1);
-        }
+    }
+  }, [input, actualizarr]);
+  function nextPag(i) {
+    if (input < Math.ceil(maximo)) {
+      setInput(input + 1);
+      setPagina(input + 1);
+    }
   }
   function prevPag() {
-      if (input >= 2) {
-          setInput(input - 1);
-          setPagina(input - 1);
-        }
+    if (input >= 2) {
+      setInput(input - 1);
+      setPagina(input - 1);
+    }
   }
-  const wr = function(){}
+  const wr = function () {};
   return (
     <div className="contenedorpaginado">
       <button className="btnpaginado" onClick={prevPag}>
@@ -41,7 +55,7 @@ function Paginado({ pagina, setPagina, maximo, setPorPag }) {
           />
         </svg>
       </button>
-      <input id="inputpag" type="number" value={input} onChange={wr}/>
+      <input id="inputpag" type="number" value={input} onChange={wr} />
       <p>{`de ${Math.ceil(maximo)}`}</p>
       <button className="btnpaginado" onClick={nextPag}>
         <svg
