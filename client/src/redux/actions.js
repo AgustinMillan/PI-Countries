@@ -20,9 +20,22 @@ export function getFilt(camb) {
 }
 export function getDetail(name) {
   return (dispatch) =>
-    axios(`http://localhost:3001/countries/${name}`)
-      .then((res) => res.data)
-      .then((payload) => dispatch({ type: GET_DETAIL, payload }));
+  axios(`http://localhost:3001/countries/${name}`)
+  .then((res) => res.data)
+  .then((payload) => dispatch({ type: GET_DETAIL, payload }));
+}
+
+export function getActividades(){
+  return dispatch =>
+  axios(`http://localhost:3001/activities`)
+  .then(res => res.data)
+  .then(payload => dispatch({type:"obteneractividades", payload}))
+}
+
+export function postActividad(obj){
+  return async function(){
+    await axios.post("http://localhost:3001/activities", obj)
+  }
 }
 
 export function cambiarCont(c) {

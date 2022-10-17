@@ -1,0 +1,72 @@
+span.danger {
+  color: red;
+  font-size: 13px;
+}
+
+input.danger {
+  border: 2px solid red;
+}
+select.danger {
+    border: 2px solid red;
+  }
+
+.contgeneralcrear {
+  background-image: url("../../img/fondoCrear.png");
+  background-size: cover;
+  position: absolute;
+  height: 95.4%;
+  width: 100.1%;
+  margin-left: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorgnrlform {
+  background-color: rgba(0, 0, 0, 0.679);
+  height: 70%;
+  width: 25%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#crearspan {
+  font-size: 25px;
+  color: aliceblue;
+  margin-top: 15px;
+}
+
+.formcrear {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spanform {
+    width: 40%;
+  margin-top: 25px;
+  background-color: rgba(181, 181, 181, 0.572);
+  border-radius: 12px;
+  margin-bottom: 7px;
+}
+
+#btnsubmit {
+  margin-top: 15px;
+  width: 20%;
+  border-radius: 12px;
+}
+#btnsubmit:hover {
+    background-color: rgb(134, 134, 134);
+    margin-top: 15px;
+    width: 20%;
+    border-radius: 12px;
+  }
+
+.inputform{
+    width: 40%;
+    height: 18px;
+    border-radius: 12px;
+    border-style: none;
+}

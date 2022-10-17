@@ -10,6 +10,7 @@ const initialState = {
   detalles: {},
   busqueda: "",
   actualizar: false,
+  actividades: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -25,7 +26,9 @@ function rootReducer(state = initialState, action) {
     case "filtorderas":
       return { ...state, paises: action.payload };
     case "actualizar":
-      return{...state, actualizar: action.payload}
+      return{...state, actualizar: action.payload};
+    case "obteneractividades":
+      return{...state, actividades: action.payload}
     default:
       return state;
   }

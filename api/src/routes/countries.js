@@ -10,7 +10,7 @@ router.get("/:id", async(req, res)=>{
     try {
         const {id} = req.params;
         const obj = await Countries.findByPk(id)
-        const actividadesDB = await CountAct.findAll;
+        const actividadesDB = await CountAct.findAll();
         let newObj = {
             id: id,
             nombre: obj.nombre,
@@ -22,9 +22,12 @@ router.get("/:id", async(req, res)=>{
             actividades: [],
         }
         for (let i = 0; i < actividadesDB.length; i++) {
-            if (actividadesDB[i]===id)newObj.actividades.push(actividadesDB[i])
+            if (actividadesDB[i].dataValues.CountryId===id){
+              const infoActividad = await Actividades.findByPk(actividadesDB[i].dataValues.ActividadeId)
+              newObj.actividades.push({id:actividadesDB[i].dataValues.ActividadeId , 
+              nombre:infoActividad})}
         }
-        return res.status(200).json(newObj)
+        return res.status(200).send(newObj)
     } catch (error) {
         res.status(404).send(error)
     }

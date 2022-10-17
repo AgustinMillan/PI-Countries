@@ -8,7 +8,9 @@ function Nav() {
         <button className="btnnav">HOME</button>
       </Link>
       <span id="navtxt">COUNTRIES</span>
+      <Link to="/crearActividad" className="btnnav">
       <button className="btnnav">Crear Actividad</button>
+      </Link>
     </div>
   );
 }
