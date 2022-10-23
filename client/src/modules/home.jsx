@@ -63,7 +63,7 @@ function Home() {
             setPagina={setPagina}
             maximo={maximo}
             setPorPag={setPorPag}
-          />
+            />
         </div>
       </div>
     </div>

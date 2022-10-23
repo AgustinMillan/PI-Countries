@@ -7,14 +7,14 @@ input.danger {
   border: 2px solid red;
 }
 select.danger {
-    border: 2px solid red;
-  }
+  border: 2px solid red;
+}
 
 .contgeneralcrear {
-  background-image: url("../../img/fondoCrear.png");
+  background-color: black;
   background-size: cover;
   position: absolute;
-  height: 95.4%;
+  height: 95%;
   width: 100.1%;
   margin-left: -2px;
   display: flex;
@@ -23,19 +23,20 @@ select.danger {
 }
 
 .contenedorgnrlform {
-  background-color: rgba(0, 0, 0, 0.679);
-  height: 70%;
-  width: 25%;
+  background-color: rgb(29, 29, 29);
+  height: 80%;
+  width: 30%;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-style: solid;
+  border-color: green;
 }
 
 #crearspan {
-  font-size: 25px;
+  font-size: 30px;
   color: aliceblue;
-  margin-top: 15px;
 }
 
 .formcrear {
@@ -45,8 +46,8 @@ select.danger {
 }
 
 .spanform {
-    width: 40%;
-  margin-top: 25px;
+  width: 40%;
+  margin-top: 40px;
   background-color: rgba(181, 181, 181, 0.572);
   border-radius: 12px;
   margin-bottom: 7px;
@@ -58,15 +59,78 @@ select.danger {
   border-radius: 12px;
 }
 #btnsubmit:hover {
-    background-color: rgb(134, 134, 134);
-    margin-top: 15px;
-    width: 20%;
-    border-radius: 12px;
-  }
+  background-color: rgb(134, 134, 134);
+  margin-top: 15px;
+  width: 20%;
+  border-radius: 12px;
+}
 
-.inputform{
-    width: 40%;
-    height: 18px;
-    border-radius: 12px;
-    border-style: none;
+.inputform {
+  width: 40%;
+  height: 18px;
+  border-radius: 12px;
+  border-style: none;
+}
+
+.contgeneralcrears {
+  background-color: black;
+  background-size: cover;
+  position: absolute;
+  height: 95%;
+  width: 100.1%;
+  margin-left: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorgnrlforms {
+  background-color: rgb(29, 29, 29);
+  height: 80%;
+  width: 30%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-style: solid;
+  color: rgb(229, 229, 1);
+
+}
+
+#crearspans {
+  font-size: 30px;
+  color: aliceblue;
+}
+
+.formcrears {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spanforms {
+  width: 40%;
+  margin-top: 40px;
+  background-color: rgba(181, 181, 181, 0.572);
+  border-radius: 12px;
+  margin-bottom: 7px;
+}
+
+#btnsubmits {
+  margin-top: 15px;
+  width: 20%;
+  border-radius: 12px;
+}
+#btnsubmits:hover {
+  background-color: rgb(134, 134, 134);
+  margin-top: 15px;
+  width: 20%;
+  border-radius: 12px;
+}
+
+.inputforms {
+  width: 40%;
+  height: 18px;
+  border-radius: 12px;
+  border-style: none;
 }

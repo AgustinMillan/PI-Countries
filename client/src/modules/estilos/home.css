@@ -1,7 +1,8 @@
 .fondoh {
   background-image: url("../../img/400645.jpg");
+  background-size: cover;
   position: absolute;
-  height: 95.4%;
+  height: 95%;
   width: 100%;
 }
 .conthomecompleto {
@@ -31,9 +32,12 @@
   justify-content: flex-start;
 }
 #inputBusq {
+  height: 30px;
   margin-left: 15px;
   font-size: 25px;
   border-radius: 12px;
+  border-style: solid;
+  border-color: blue;
 }
 .contenedorOrdenamiento {
   display: flex;
@@ -41,6 +45,3 @@
   align-items: center;
   margin-left: 10px;
 }
-/* .conthomecompleto{
-  dis
-} */

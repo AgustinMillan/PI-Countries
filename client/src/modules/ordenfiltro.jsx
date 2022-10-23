@@ -5,10 +5,6 @@ import {
   cambiarCont,
   getActividades,
   getAllPaises,
-  masPoblacion,
-  menorPoblacion,
-  ordenAs,
-  ordenDes,
 } from "../redux/actions";
 import "./estilos/ordenfiltro.css";
 
@@ -24,10 +20,10 @@ function Ordenfiltro() {
   });
   useEffect(() => {
     if (!lista.length) {
-      dispatch(getActividades());
+      dispatch(getAllPaises());
     }
     if (!actividades.length) {
-      dispatch(getAllPaises());
+      dispatch(getActividades());
     }
     let filtroF = lista;
     if (filt.actividad !== "") {
@@ -43,7 +39,7 @@ function Ordenfiltro() {
         }
       }
       filtroF = narr;
-    } 
+    }
 
     if (filt.continente === "Africa") {
       let narr;
@@ -70,24 +66,43 @@ function Ordenfiltro() {
       let narr;
       narr = filtroF.filter((e) => e.continente === filt.continente);
       filtroF = narr;
-    } 
-    dispatch(actualizar(true))
-  
+    }
 
     if (filt.orden === "descendente") {
-      dispatch(ordenDes(lista));
-      dispatch(actualizar(true));
+      let narr;
+      narr = filtroF.sort((a, b) => {
+        if (a.nombre < b.nombre) return -1;
+        if (a.nombre > b.nombre) return 1;
+        return 0;
+      });
+      filtroF = narr;
     } else if (filt.orden === "ascendente") {
-      dispatch(ordenAs(lista));
-      dispatch(actualizar(true));
+      let narr;
+      narr = filtroF.sort((a, b) => {
+        if (a.nombre < b.nombre) return 1;
+        if (a.nombre > b.nombre) return -1;
+        return 0;
+      });
+      filtroF = narr;
     } else if (filt.orden === "+poblacion") {
-      dispatch(masPoblacion(lista));
-      dispatch(actualizar(true));
+      let narr;
+      narr = filtroF.sort((a, b) => {
+        if (a.poblacion < b.poblacion) return 1;
+        if (a.poblacion > b.poblacion) return -1;
+        return 0;
+      });
+      filtroF = narr;
     } else if (filt.orden === "-poblacion") {
-      dispatch(menorPoblacion(lista));
-      dispatch(actualizar(true));
-    } 
+      let narr;
+      narr = filtroF.sort((a, b) => {
+        if (a.poblacion < b.poblacion) return -1;
+        if (a.poblacion > b.poblacion) return 1;
+        return 0;
+      });
+      filtroF = narr;
+    }
 
+    dispatch(actualizar(true));
     dispatch(cambiarCont(filtroF));
   }, [dispatch, filt]);
   function cambioOrden(e) {
@@ -103,14 +118,18 @@ function Ordenfiltro() {
     setFilt({ ...filt, actividad: valor });
   }
   function limpiarFiltros() {
-      dispatch(getAllPaises());
-      setFilt({ actividad: "", continente: "", orden: "" });
+    dispatch(getAllPaises());
+    setFilt({ actividad: "", continente: "", orden: "" });
   }
   return (
     <div className="contOrdenFiltro">
       <div>
         <span className="ordenSpan">Orden:</span>
-        <select className="ordenSelecasd" onChange={(e) => cambioOrden(e)} value={filt.orden}>
+        <select
+          className="ordenSelecasd"
+          onChange={(e) => cambioOrden(e)}
+          value={filt.orden}
+        >
           <option value={"none"}>none</option>
           <option value={"descendente"}>Descendente</option>
           <option value={"ascendente"}>Ascendente</option>
@@ -120,7 +139,11 @@ function Ordenfiltro() {
       </div>
       <div>
         <span className="ordenSpan">Continente:</span>
-        <select onChange={(e) => filtrarCont(e)} value={filt.continente} className="ordenSelecasd">
+        <select
+          onChange={(e) => filtrarCont(e)}
+          value={filt.continente}
+          className="ordenSelecasd"
+        >
           <option value={"none"}>none</option>
           <option value="Africa">Africa</option>
           <option value="Asia">Asia</option>
@@ -132,7 +155,11 @@ function Ordenfiltro() {
       </div>
       <div>
         <span className="ordenSpan">Actividad:</span>
-        <select className="ordenSelecasd" onChange={(e) => filtAct(e)} value={filt.actividad}>
+        <select
+          className="ordenSelecasd"
+          onChange={(e) => filtAct(e)}
+          value={filt.actividad}
+        >
           <option value="none">none</option>
           {actividades &&
             actividades.map((e) => (
@@ -142,7 +169,9 @@ function Ordenfiltro() {
             ))}
         </select>
       </div>
-        <button id="btnBorrarFiltros" onClick={limpiarFiltros}>Quitar Filtros</button>
+      <button id="btnBorrarFiltros" onClick={limpiarFiltros}>
+        Quitar Filtros
+      </button>
     </div>
   );
 }

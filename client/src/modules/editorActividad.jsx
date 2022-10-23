@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPaises, postActividad } from "../redux/actions";
-import {Link} from "react-router-dom"
+import { actualizar, cambAct, getActividades, getAllPaises, updateActividadBD } from "../redux/actions";
+import { Link, useParams } from "react-router-dom";
 import "./estilos/crear.css";
-function Crear() {
+
+function EditorActividad() {
+  let { id } = useParams();
   const dispatch = useDispatch();
   const list = useSelector((s) => s.paises);
+  const act = useSelector((s) => s.actividades);
   const [lista, setLista] = useState([]);
   const [input, setInput] = useState({
     nombre: "",
@@ -35,12 +38,13 @@ function Crear() {
       errors.temporada = "Porfavor selecciona una temporada";
     }
     if (!lista.length) {
-      errors.pais = "Porfavor selecciona por lo menos Pais";
+      errors.pais = "Porfavor selecciona por lo menos 1 Pais";
     }
     return errors;
   }
   useEffect(() => {
     dispatch(getAllPaises());
+
     setInput({
       ...input,
       paises: lista,
@@ -52,7 +56,7 @@ function Crear() {
 
   function añadirPais(e) {
     let valor = e.target.value;
-    if (valor !== "paises" && !lista.includes(valor)) {
+    if (valor !== "paises") {
       setLista([...lista, valor]);
     }
     return;
@@ -74,8 +78,8 @@ function Crear() {
     ) {
       return alert("Porfavor revisa el formulario");
     } else {
-      dispatch(postActividad(input));
-      alert("Actividad creada");
+      dispatch(updateActividadBD({ ...input, id }));
+      alert("Actividad editada");
       setInput({
         nombre: "",
         dificultad: 0,
@@ -84,6 +88,7 @@ function Crear() {
         paises: [],
       });
       setLista([]);
+      dispatch(actualizar(true));
     }
   }
   function handleInputChange(e) {
@@ -94,11 +99,11 @@ function Crear() {
     setErrors(validate({ ...input, [e.target.name]: e.target.value }));
   }
   return (
-    <div className="contgeneralcrear">
-      <div className="contenedorgnrlform">
-      <div className="salir">
-          <Link to="/home">
-            <button className="btnsalir">
+    <div className="contgeneralcrears">
+      <div className="contenedorgnrlforms">
+        <div className="salirs">
+          <Link to="/centroDeActividades/e">
+            <button className="btnsalirs">
               <svg
                 width="20"
                 height="27"
@@ -113,10 +118,10 @@ function Crear() {
               </svg>
             </button>
           </Link>
-          </div>
-        <span id="crearspan">CREAR ACTIVIDAD</span>
-        <form className="formcrear" onSubmit={onSubmit}>
-          <span className="spanform">Nombre de la actividad</span>
+        </div>
+        <span id="crearspans">EDITAR ACTIVIDAD</span>
+        <form className="formcrears" onSubmit={onSubmit}>
+          <span className="spanforms">Nombre de la actividad</span>
           <input
             type="text"
             name="nombre"
@@ -127,7 +132,7 @@ function Crear() {
           />
           {errors.nombre && <span className="danger">{errors.nombre}</span>}
 
-          <span className="spanform">Dificultad</span>
+          <span className="spanforms">Dificultad</span>
           <input
             type="number"
             name="dificultad"
@@ -140,7 +145,7 @@ function Crear() {
             <span className="danger">{errors.dificultad}</span>
           )}
 
-          <span className="spanform">Duracion</span>
+          <span className="spanforms">Duracion</span>
           <input
             type="number"
             name="duracion"
@@ -151,7 +156,7 @@ function Crear() {
           />
           {errors.duracion && <span className="danger">{errors.duracion}</span>}
 
-          <span className="spanform">Temporada</span>
+          <span className="spanforms">Temporada</span>
           <select
             name="temporada"
             value={input.temporada}
@@ -168,7 +173,7 @@ function Crear() {
             <span className="danger">{errors.temporada}</span>
           )}
 
-          <span className="spanform">Paises</span>
+          <span className="spanforms">Paises</span>
           <select
             onChange={(e) => añadirPais(e)}
             name="paises"
@@ -197,4 +202,4 @@ function Crear() {
   );
 }
 
-export default Crear;
+export default EditorActividad;

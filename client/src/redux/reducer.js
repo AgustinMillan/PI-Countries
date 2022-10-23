@@ -23,12 +23,18 @@ function rootReducer(state = initialState, action) {
       return { ...state, detalles: action.payload };
     case CAMBIAR_CONTENIDO:
       return { ...state, paises: action.payload };
-    case "filtorderas":
-      return { ...state, paises: action.payload };
     case "actualizar":
       return{...state, actualizar: action.payload};
     case "obteneractividades":
-      return{...state, actividades: action.payload}
+      return{...state, actividades: action.payload};
+    case "cambiarDetail":
+      return{...state, detalles:action.payload};
+    case "cambiarActividades":
+      return{...state, actividades: action.payload};
+    case "ACTUALIZACIONBD":
+      return{...state,actividades:action.payload};
+    case "BORRARACBD":
+      return{...state, actividades:action.payload}
     default:
       return state;
   }

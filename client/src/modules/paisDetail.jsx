@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import "./estilos/detallepais.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getDetail } from "../redux/actions";
+import { cambDetail, getDetail } from "../redux/actions";
 
 function PaisDetail() {
   let { name } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDetail(name));
+    return dispatch(cambDetail({}))
   }, [dispatch,name]);
   const pais = useSelector((state) => state.detalles);
   return (
@@ -33,6 +34,7 @@ function PaisDetail() {
           </Link>
         </div>
         <span className="nombredetail">{pais.nombre}</span>
+        <span className="nombredetail">{pais.id}</span>
         <div className="contdetalles">
           <span className="detalles">Continente: {pais.continente}</span>
           <span className="detalles">Capital: {pais.capital}</span>

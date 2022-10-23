@@ -5,6 +5,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom-style: solid;
+    color: blue;
+}
+.navfs{
+    height: 45px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    color: green;
+}
+.navfe{
+    height: 45px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    color: red;
+}
+.navfide{
+    height: 45px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    color: rgb(229, 229, 1);
 }
 
 .btnnav{
@@ -24,7 +56,14 @@
 }
 
 #navtxt{
-    font-size: 19px;
+    font-size: 38px;
+    margin-left: 3px;
     font-weight: bold;
     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#imgpng{
+    max-height: 33px ;
+    min-height: 33px ;
+    max-width: 33px;
+    min-width: 33px;
 }
