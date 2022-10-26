@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actualizar } from "../redux/actions";
 import "./estilos/paginado.css";
-function Paginado({ pagina, setPagina, maximo, setPorPag }) {
+function Paginado({ pagina, setPagina, maximo, setPorPag, num }) {
   const [input, setInput] = useState(1);
   const actualizarr = useSelector((e) => e.actualizar);
   const dispatch = useDispatch();
@@ -38,7 +38,13 @@ function Paginado({ pagina, setPagina, maximo, setPorPag }) {
       setPagina(input - 1);
     }
   }
-  const wr = function () {};
+  const wr = function (e) {
+    e.preventDefault();
+    if (e.target.value >= 1 && e.target.value <= maximo+1) {
+      setPagina(e.target.value);
+      setInput(e.target.value);
+    }
+  };
   return (
     <div className="contenedorpaginado">
       <button className="btnpaginado" onClick={prevPag}>
@@ -55,7 +61,12 @@ function Paginado({ pagina, setPagina, maximo, setPorPag }) {
           />
         </svg>
       </button>
-      <input id="inputpag" type="number" value={input} onChange={wr} />
+      <input
+        id="inputpag"
+        type="number"
+        value={input}
+        onChange={(e) => wr(e)}
+      />
       <p>{`de ${Math.ceil(maximo)}`}</p>
       <button className="btnpaginado" onClick={nextPag}>
         <svg

@@ -6,7 +6,7 @@ function Pais({ id ,img, nombre, continente }) {
     <Link to={`/country/${id}`}>
       <div className="CardPaisHome">
         <img src={img} className="imgCard" alt="imgpais" />
-        <span id="nombreDePais">{nombre}</span>
+        <span id="nombreDePais">{nombre.length>30?nombre.slice(0,30):nombre}</span>
         <span id="continenteDePais">{continente}</span>
       </div>
     </Link>

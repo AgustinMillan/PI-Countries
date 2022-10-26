@@ -13,7 +13,7 @@ function Home() {
   const [pagina, setPagina] = useState(1);
   const [porPag, setPorPag] = useState(9);
   const [camB, setCamB] = useState("");
-  const maximo = paises.length / porPag;
+  const maximo = paises.length / 10;
   let listpaises = paises.slice(
     (pagina - 1) * porPag,
     (pagina - 1) * porPag + porPag
