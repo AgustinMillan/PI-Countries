@@ -5,6 +5,7 @@ import {
   cambiarCont,
   getActividades,
   getAllPaises,
+  cambAF
 } from "../redux/actions";
 import "./estilos/ordenfiltro.css";
 
@@ -12,6 +13,7 @@ function Ordenfiltro() {
   const dispatch = useDispatch();
   const lista = useSelector((s) => s.paises);
   const actividades = useSelector((s) => s.actividades);
+  const actualizarF = useSelector(s => s.actualizarFilt);
   const [filt, setFilt] = useState({
     actividad: "",
     continente: "",
@@ -68,7 +70,7 @@ function Ordenfiltro() {
       filtroF = narr;
     }
 
-    if (filt.orden === "descendente") {
+    if (filt.orden === "ascendente") {
       let narr;
       narr = filtroF.sort((a, b) => {
         if (a.nombre < b.nombre) return -1;
@@ -76,7 +78,7 @@ function Ordenfiltro() {
         return 0;
       });
       filtroF = narr;
-    } else if (filt.orden === "ascendente") {
+    } else if (filt.orden === "descendente") {
       let narr;
       narr = filtroF.sort((a, b) => {
         if (a.nombre < b.nombre) return 1;
@@ -104,7 +106,12 @@ function Ordenfiltro() {
 
     dispatch(actualizar(true));
     dispatch(cambiarCont(filtroF));
-  }, [dispatch, filt]);
+
+    if(actualizarF === true){
+      limpiarFiltros();
+      dispatch(cambAF(false));
+    }
+  }, [dispatch, filt, actualizarF]);
   function cambioOrden(e) {
     let valor = e.target.value;
     setFilt({ ...filt, orden: valor });
@@ -120,6 +127,7 @@ function Ordenfiltro() {
   function limpiarFiltros() {
     dispatch(getAllPaises());
     setFilt({ actividad: "", continente: "", orden: "" });
+    dispatch(cambAF(false))
   }
   return (
     <div className="contOrdenFiltro">

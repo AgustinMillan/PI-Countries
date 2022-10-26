@@ -101,7 +101,6 @@ router.put("/", async (req, res) => {
       let pais = await Countries.findAll({ where: { nombre: obj.paises[i] } });
       ids.push(pais[0].dataValues.id);
     }
-    console.log(ids);
     if (obj.id) {
       await Actividades.update(
         {

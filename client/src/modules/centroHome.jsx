@@ -40,7 +40,7 @@ function CentroHome() {
   }
   return (
     <div className="fontCentroHome">
-      <button onClick={Inicio} id="btninfocentro">?</button>
+      {/* <button onClick={Inicio} id="btninfocentro">?</button> */}
       {actividades ? (
         actividades.map((e) => (
           <Listactividad

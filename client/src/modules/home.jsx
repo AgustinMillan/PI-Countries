@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import "./estilos/home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPaises, getFilt } from "../redux/actions";
+import { getAllPaises, getFilt, cambiarCont, cambAF } from "../redux/actions";
 import Pais from "./pais";
 import Paginado from "./paginado";
 import Ordenfiltro from "./ordenfiltro";
@@ -19,10 +19,19 @@ function Home() {
     (pagina - 1) * porPag + porPag
   );
   useEffect(() => {
+    let aux;
     if (camB === "") {
       dispatch(getAllPaises());
+      dispatch(cambAF(true));
     } else {
-      dispatch(getFilt(camB));
+      if (!paises.length) {
+        dispatch(getFilt(camB));
+      } else {
+        aux = paises.filter((e) =>
+          e.nombre.toLowerCase().includes(camB.toLowerCase())
+        );
+        dispatch(cambiarCont(aux));
+      }
     }
   }, [dispatch, camB]);
 

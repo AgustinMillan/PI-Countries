@@ -33,8 +33,7 @@ function PaisDetail() {
             </button>
           </Link>
         </div>
-        <span className="nombredetail">{pais.nombre}</span>
-        <span className="nombredetail">{pais.id}</span>
+        <span className="nombredetail">{pais.nombre}|| #{pais.id}</span>
         <div className="contdetalles">
           <span className="detalles">Continente: {pais.continente}</span>
           <span className="detalles">Capital: {pais.capital}</span>

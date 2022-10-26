@@ -69,3 +69,7 @@ export function cambDetail(a){
 export function cambAct(a){
   return dispatch => dispatch({type:"cambiarActividades",payload:a})
 }
+
+export function cambAF(a){
+  return dispatch => dispatch({type:"ACTUALIZARFILTRADO", payload:a})
+}

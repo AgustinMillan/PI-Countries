@@ -60,7 +60,7 @@ router.get("/", async (req, res) => {
             if(Array.isArray(data[i].capital))
             await Countries.create({
               id: data[i].cca3,
-              nombre: data[i].name.common,
+              nombre: data[i].translations.spa.common,
               imgB: data[i].flags[1],
               continente: data[i].continents[0],
               capital: data[i].capital[0],

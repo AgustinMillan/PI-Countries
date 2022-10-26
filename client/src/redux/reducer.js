@@ -11,6 +11,7 @@ const initialState = {
   busqueda: "",
   actualizar: false,
   actividades: [],
+  actualizarFilt: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -35,6 +36,8 @@ function rootReducer(state = initialState, action) {
       return{...state,actividades:action.payload};
     case "BORRARACBD":
       return{...state, actividades:action.payload}
+    case "ACTUALIZARFILTRADO":
+      return{...state, actualizarFilt:action.payload}
     default:
       return state;
   }
